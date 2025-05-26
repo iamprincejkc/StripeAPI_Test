@@ -26,10 +26,13 @@ namespace Stripe.Controllers
 
 
         [HttpGet("SessionStatus")]
-        public ActionResult SessionStatus([FromQuery] string session_id)
+        public async Task<ActionResult> SessionStatus([FromQuery] string session_id)
         {
             var sessionService = new SessionService();
             Session session = sessionService.Get(session_id);
+
+            //Data of the product is here
+            var lineItems2 = await sessionService.LineItems.ListAsync(session.Id, new SessionLineItemListOptions());
 
             return Ok(new { status = session.Status, customer_email = session.CustomerDetails.Email,session = session });
         }
@@ -80,6 +83,10 @@ namespace Stripe.Controllers
                         }
                         }
                     });
+                
+
+                //Data of the product is here
+                var lineItems2 = await stripeSessionService.LineItems.ListAsync(stripeCheckoutSession.Id, new SessionLineItemListOptions());
 
                 return Ok(new { clientSecret = stripeCheckoutSession.ClientSecret,message="Success" });
             }
