@@ -1,0 +1,33 @@
+﻿<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Product</title>
+
+    <script src="https://js.stripe.com/v3/"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1>My Shop</h1>
+                <div class="container">
+                    <div class="row">
+                        <div class="row-12">
+                            <h3>Wireless earpohone</h3>
+                            <p>The best wireless earphone</p>
+                            <p>USD 49.99</p>
+                            Email
+                            <input type="text" name="Email" />
+                            <button class="btn btn-primary" type="submit" data-buy="1">Buy</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="checkout">
+                <!-- Checkout will insert the payment form here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/stripe.js?v=3"></script>
+</body>
+</html>
